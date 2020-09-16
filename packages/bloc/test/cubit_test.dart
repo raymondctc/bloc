@@ -4,9 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+import 'bloc_observer.mocks.dart';
 import 'cubits/cubits.dart';
-
-class MockBlocObserver extends Mock implements BlocObserver {}
 
 void main() {
   group('Cubit', () {
@@ -43,7 +42,7 @@ void main() {
     });
 
     group('onChange', () {
-      BlocObserver observer;
+      late BlocObserver observer;
 
       setUp(() {
         observer = MockBlocObserver();
@@ -55,8 +54,7 @@ void main() {
         final cubit = CounterCubit(onChangeCallback: changes.add);
         await cubit.close();
         expect(changes, isEmpty);
-        // ignore: invalid_use_of_protected_member
-        verifyNever(observer.onChange(any, any));
+        verifyNoMoreInteractions(observer);
       });
 
       test('is called with correct change for a single state change', () async {

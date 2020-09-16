@@ -5,15 +5,14 @@ import 'package:mockito/mockito.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
 
-import './blocs/blocs.dart';
-
-class MockBlocObserver extends Mock implements BlocObserver {}
+import 'bloc_observer.mocks.dart';
+import 'blocs/blocs.dart';
 
 void main() {
   group('Bloc Tests', () {
     group('Simple Bloc', () {
-      SimpleBloc simpleBloc;
-      BlocObserver observer;
+      late SimpleBloc simpleBloc;
+      late BlocObserver observer;
 
       setUp(() {
         simpleBloc = SimpleBloc();
@@ -121,8 +120,8 @@ void main() {
     });
 
     group('Complex Bloc', () {
-      ComplexBloc complexBloc;
-      BlocObserver observer;
+      late ComplexBloc complexBloc;
+      late BlocObserver observer;
 
       setUp(() {
         complexBloc = ComplexBloc();
@@ -221,10 +220,10 @@ void main() {
     });
 
     group('CounterBloc', () {
-      CounterBloc counterBloc;
-      BlocObserver observer;
-      List<String> transitions;
-      List<CounterEvent> events;
+      late CounterBloc counterBloc;
+      late BlocObserver observer;
+      late List<String> transitions;
+      late List<CounterEvent> events;
 
       setUp(() {
         events = [];
@@ -375,8 +374,8 @@ void main() {
     });
 
     group('Async Bloc', () {
-      AsyncBloc asyncBloc;
-      BlocObserver observer;
+      late AsyncBloc asyncBloc;
+      late BlocObserver observer;
 
       setUp(() {
         asyncBloc = AsyncBloc();
@@ -408,8 +407,7 @@ void main() {
         await asyncBloc.close();
 
         expect(states, expectedStates);
-        // ignore: invalid_use_of_protected_member
-        verifyNever(observer.onError(any, any, any));
+        verifyNoMoreInteractions(observer);
       });
 
       test('state returns correct value initially', () {
@@ -691,8 +689,8 @@ void main() {
       test('triggers onError from mapEventToState', () {
         runZoned(() {
           final exception = Exception('fatal exception');
-          Object expectedError;
-          StackTrace expectedStacktrace;
+          Object? expectedError;
+          StackTrace? expectedStacktrace;
 
           final onExceptionBloc = OnExceptionBloc(
               exception: exception,
@@ -745,8 +743,8 @@ void main() {
 
       test('does not triggers onError from add', () {
         runZoned(() {
-          Object capturedError;
-          StackTrace capturedStacktrace;
+          Object? capturedError;
+          StackTrace? capturedStacktrace;
           final counterBloc = CounterBloc(
             onErrorCallback: (error, stackTrace) {
               capturedError = error;
@@ -793,8 +791,8 @@ void main() {
         runZoned(
           () {
             final error = Error();
-            Object expectedError;
-            StackTrace expectedStacktrace;
+            Object? expectedError;
+            StackTrace? expectedStacktrace;
 
             final onErrorBloc = OnErrorBloc(
               error: error,
@@ -824,8 +822,8 @@ void main() {
         runZoned(
           () {
             final error = Error();
-            Object expectedError;
-            StackTrace expectedStacktrace;
+            Object? expectedError;
+            StackTrace? expectedStacktrace;
 
             final onTransitionErrorBloc = OnTransitionErrorBloc(
               error: error,
