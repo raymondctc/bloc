@@ -5,8 +5,9 @@ import 'package:mockito/mockito.dart';
 import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
 
-import 'bloc_observer.mocks.dart';
 import 'blocs/blocs.dart';
+
+class MockBlocObserver extends Mock implements BlocObserver {}
 
 void main() {
   group('Bloc Tests', () {

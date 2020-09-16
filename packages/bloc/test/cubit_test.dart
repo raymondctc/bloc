@@ -4,8 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import 'bloc_observer.mocks.dart';
 import 'cubits/cubits.dart';
+
+class MockBlocObserver extends Mock implements BlocObserver {}
 
 void main() {
   group('Cubit', () {
