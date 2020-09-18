@@ -1,0 +1,11 @@
+name: example
+description: A Dart package:bloc example
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.10.0-99.0.dev <2.10.0"
+
+dependencies:
+  bloc:
+    path: ../
