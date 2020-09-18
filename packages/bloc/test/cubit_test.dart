@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import 'cubits/cubits.dart';
-
-class MockBlocObserver extends Mock implements BlocObserver {}
+import 'mock_bloc_observer.dart';
 
 void main() {
   group('Cubit', () {
@@ -43,7 +41,7 @@ void main() {
     });
 
     group('onChange', () {
-      late BlocObserver observer;
+      late MockBlocObserver observer;
 
       setUp(() {
         observer = MockBlocObserver();
@@ -55,7 +53,7 @@ void main() {
         final cubit = CounterCubit(onChangeCallback: changes.add);
         await cubit.close();
         expect(changes, isEmpty);
-        verifyNoMoreInteractions(observer);
+        expect(observer.onChangeCalls, isEmpty);
       });
 
       test('is called with correct change for a single state change', () async {
@@ -66,11 +64,9 @@ void main() {
           changes,
           const [Change<int>(currentState: 0, nextState: 1)],
         );
-        // ignore: invalid_use_of_protected_member
-        verify(observer.onChange(
-          cubit,
-          const Change<int>(currentState: 0, nextState: 1),
-        )).called(1);
+        expect(observer.onChangeCalls, [
+          OnChangeCall(cubit, const Change<int>(currentState: 0, nextState: 1)),
+        ]);
       });
 
       test('is called with correct changes for multiple state changes',
@@ -87,16 +83,10 @@ void main() {
             Change<int>(currentState: 1, nextState: 2),
           ],
         );
-        // ignore: invalid_use_of_protected_member
-        verify(observer.onChange(
-          cubit,
-          const Change<int>(currentState: 0, nextState: 1),
-        )).called(1);
-        // ignore: invalid_use_of_protected_member
-        verify(observer.onChange(
-          cubit,
-          const Change<int>(currentState: 1, nextState: 2),
-        )).called(1);
+        expect(observer.onChangeCalls, [
+          OnChangeCall(cubit, const Change<int>(currentState: 0, nextState: 1)),
+          OnChangeCall(cubit, const Change<int>(currentState: 1, nextState: 2)),
+        ]);
       });
     });
 
