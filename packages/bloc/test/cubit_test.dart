@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:test/test.dart';
 
 import 'cubits/cubits.dart';
-import 'mock_bloc_observer.dart';
+import 'mocks/mocks.dart';
 
 void main() {
   group('Cubit', () {

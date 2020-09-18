@@ -5,7 +5,7 @@ import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
 
 import 'blocs/blocs.dart';
-import 'mock_bloc_observer.dart';
+import 'mocks/mocks.dart';
 
 void main() {
   group('Bloc Tests', () {
