@@ -110,6 +110,7 @@ The goal of this library is to make it easy to separate _presentation_ from _bus
 - [Dynamic Form](https://github.com/felangel/bloc/tree/master/examples/flutter_dynamic_form) - an example of how to use the `bloc` and `flutter_bloc` packages to implement a dynamic form which pulls data from a repository.
 - [Wizard](https://github.com/felangel/bloc/tree/master/examples/flutter_wizard) - an example of how to build a multi-step wizard using the `bloc` and `flutter_bloc` packages.
 - [GraphQL](https://github.com/felangel/bloc/tree/master/examples/flutter_graphql_jobs) - an example of how to use the `bloc` and `flutter_bloc` packages with `graphql` to retrieve data from [api.graphql.jobs](https://api.graphql.jobs).
+- [Fluttersaurus](https://github.com/felangel/fluttersaurus) - an example of how to use the `bloc` and `flutter_bloc` packages to create a thesuarus app -- made for Bytconf Flutter 2020.
 
 ### Web
 
@@ -161,6 +162,7 @@ Learn more at the following links, which have been contributed by the community.
 - [Flutter Football Player Search](https://www.youtube.com/watch?v=S2KmxzgsTwk) - How to build a Football Player Search app which interacts with an API using the bloc and flutter_bloc packages, by [Techie Blossom](https://techieblossom.com).
 - [Learning the Flutter Bloc Package](https://www.youtube.com/watch?v=eAiCPl3yk9A&t=1s) - Learning the flutter_bloc package live, by [Robert Brunhage](https://www.youtube.com/channel/UCSLIg5O0JiYO1i2nD4RclaQ)
 - [Bloc Test Tutorial](https://www.youtube.com/watch?v=S6jFBiiP0Mc) - Tutorial on how to unit test blocs using the bloc_test package, by [Reso Coder](https://resocoder.com).
+- [Bloc - from Zero to Hero](https://www.youtube.com/playlist?list=PLptHs0ZDJKt_T-oNj_6Q98v-tBnVf-S_o) - Playlist which includes everything needed to get started with bloc, by [Flutterly](https://www.youtube.com/channel/UC5PYcSe3to4mtm3SPCUmjvw).
 
 ### Written Resources
 
