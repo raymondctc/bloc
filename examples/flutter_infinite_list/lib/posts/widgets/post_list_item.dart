@@ -9,12 +9,25 @@ class PostListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return ListTile(
-      leading: Text('${post.id}', style: textTheme.caption),
-      title: Text(post.title),
-      isThreeLine: true,
-      subtitle: Text(post.body),
-      dense: true,
+    return Container(
+      child: Column(
+        children: [
+          Text(post.title),
+          SizedBox(
+            width: double.infinity,
+            height: 300,
+            child: Image.network(post.imageUrl),
+          )
+        ],
+      )
     );
+
+    // return ListTile(
+    //   leading: Text('${post.id}', style: textTheme.caption),
+    //   title: Text(post.title),
+    //   isThreeLine: true,
+    //   subtitle: Text(post.body),
+    //   dense: true,
+    // );
   }
 }
