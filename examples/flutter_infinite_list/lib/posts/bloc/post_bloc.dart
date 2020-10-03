@@ -69,7 +69,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           id: rawPost['id'] as int,
           title: rawPost['title'] as String,
           body: rawPost['title'] as String,
-          imageUrl: rawPost['url'] as String
+          imageUrl: rawPost['url'] as String,
+          videoUrl: 'https://img-9gag-fun.9cache.com/photo/agAj5oW_460sv.mp4'
         );
       }).toList();
     }

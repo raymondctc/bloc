@@ -2,24 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter_infinite_list/posts/posts.dart';
 
 class PostListItem extends StatelessWidget {
-  const PostListItem({Key key, @required this.post}) : super(key: key);
+  const PostListItem({
+    Key key,
+    @required this.post,
+    @required this.user
+  }) : super(key: key);
 
   final Post post;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Container(
-      child: Column(
+      margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+      child: Row(
         children: [
-          Text(post.title),
-          SizedBox(
-            width: double.infinity,
-            height: 300,
-            child: Image.network(post.imageUrl),
+          const Padding(
+            child: CircleAvatar(
+              child: Text('AH'),
+              backgroundColor: Colors.grey,
+            ),
+            padding: EdgeInsets.fromLTRB(16, 0, 8, 0),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: const BorderRadius.all(Radius.circular(8))
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Text(
+                    user.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
+                  ),
+                  padding: const EdgeInsets.fromLTRB(8, 4, 4, 0)
+                ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 300
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(8, 4, 4, 8),
+                    child: Text(
+                      post.title,
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
-      )
+      ),
     );
 
     // return ListTile(

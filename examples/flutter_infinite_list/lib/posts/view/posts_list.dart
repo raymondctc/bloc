@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_infinite_list/posts/posts.dart';
+import 'package:flutter_infinite_list/posts/widgets/post_list_video_item.dart';
+import 'package:video_player/video_player.dart';
 
 class PostsList extends StatefulWidget {
   @override
@@ -38,7 +40,10 @@ class _PostsListState extends State<PostsList> {
               itemBuilder: (BuildContext context, int index) {
                 return index >= state.posts.length
                     ? BottomLoader()
-                    : PostListItem(post: state.posts[index]);
+                    : PostListVideoItem(
+                  post: state.posts[index],
+                  user: const User(name: 'Hello', id: '123', gender: 0),
+                );
               },
               itemCount: state.hasReachedMax
                   ? state.posts.length
@@ -67,5 +72,9 @@ class _PostsListState extends State<PostsList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
+  }
+
+  void onTapped(Widget widget) {
+
   }
 }
